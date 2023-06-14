@@ -26,19 +26,18 @@ extension DateTimeExt on DateTime {
     return lastDateOfMonth.add(const Duration(hours: 23, minutes: 59, seconds: 59, milliseconds: 999));
   }
 
+  DateTime get startOfQuarter {
+    return DateTime(year, (currentQuarter * 3) - 2, 1);
+  }
+
   DateTime endOfGivenQuarter(int quarter) {
-    // Check if the quarter is valid.
+
     if (quarter < 1 || quarter > 4) {
       throw ArgumentError('Quarter must be between 1 and 4.');
     }
 
-    // Get the last day of the month for the given quarter.
-
-
-    // Create a new DateTime object for the last day of the month.
     final DateTime lastDateOfMonth = DateTime(year, quarter * 3 + 1, lastMonthDayOfGivenQuarter(quarter));
 
-    // Add 23 hours, 59 minutes, 59 seconds, and 999 milliseconds to the date.
     return lastDateOfMonth.add(const Duration(hours: 23, minutes: 59, seconds: 59, milliseconds: 999));
   }
 
@@ -48,18 +47,29 @@ extension DateTimeExt on DateTime {
 
   DateTime get endOfYear {
 
-    // Create a new DateTime object for the end of the year.
     DateTime endOfYear = DateTime(year, 12, 31, 23, 59, 59, 999);
 
-    // Return the new DateTime object.
+    return endOfYear;
+  }
+
+  DateTime get startOfYear {
+
+    DateTime endOfYear = DateTime(year);
+
     return endOfYear;
   }
 
   DateTime get endOfMonth {
-    // Create a new DateTime object for the end of the month.
+
     DateTime endOfMonth = DateTime(year, month + 1, 0, 23, 59, 59, 999);
 
-    // Return the new DateTime object.
+    return endOfMonth;
+  }
+
+  DateTime get startOfMonth {
+
+    DateTime endOfMonth = DateTime(year, month);
+
     return endOfMonth;
   }
 }
